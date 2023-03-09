@@ -1,0 +1,127 @@
+<%- include('./layouts/header') %>
+
+    <%- include('./layouts/navbar') %>
+
+        <main class="tayy bg-center h-full bg-cover bg-no-repeat py-32 pb-96 text-white">
+            <div class="px-2">
+                <h1 class="font-bold underline text-center text-white text-3xl ">Reserved Bookings</h1>
+            </div>
+            <form method="POST" class="mx-64" action="/res-booking">
+
+                <div class="flex justify-center py-4">
+                    <div class="mb-3 xl:w-96">
+                        <div class="relative mb-4 flex w-full flex-wrap items-stretch">
+                            <input type="text" name="searchTerm"
+                                class="relative m-0 -mr-px block w-[1%] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-neutral-700 outline-none transition duration-300 ease-in-out focus:border-primary-600 focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200"
+                                placeholder="Search for a customer..." aria-label="Search"
+                                aria-describedby="button-addon3" />
+                            <button type="submit"
+                                class="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+                                type="button" id="button-addon3" data-te-ripple-init>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <% if (data.length) { %>
+                <% data.sort((a, b)=> new Date(a.date) - new Date(b.date)) %>
+                    <% data.forEach(Customer=> { %>
+                        <div id="myForm"
+                            class="flex flex-col sm:flex-row items-center sm:justify-between sm:px-10 border border-gray-600  bg-gradient-to-t from-black via-black w-5/6 mx-32 rounded-3xl mt-4">
+                            <div>
+                                <ul class="flex  space-x-4 my-4 rounded-sm w-">
+                                    <li class="">
+                                        Name: <h1>
+                                            <%=Customer.name %>
+                                        </h1>
+                                    </li>
+                                    <li class="">
+                                        Slip ID:<h1>
+                                            <%=Customer.slip %>
+                                        </h1>
+                                    </li>
+                                    <li class="" id="">
+                                        Date: <h1>
+                                            <% const date=new Date() %>
+                                                <% const formattedDate=Customer.date %>
+                                                    <h1>
+                                                        <%= formattedDate %>
+                                                    </h1>
+
+                                                    <%if(formattedDate<date){%>
+                                                        <form class="t" action="/done/<%=Customer.id%>" method='post'>
+                                                            <button type="submit" onclick="click()"
+                                                                class="bg-green-600 ">
+                                                                done
+                                                            </button>
+                                                            <!-- <form class="t" action="/done/<%=Customer.id%>?_method=DELETE" method='post'>
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                <button type="submit"  value="delete" onclick="click1()"
+                                                                class="bg-green-600 ">
+                                                                done
+                                                            </button> -->
+                                                        </form>
+                                                        </form>
+
+                                                        <% } else { %>
+                                                            <p class="bg-red-600">important</p>
+                                                            <% } %>
+                                        </h1>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="space-x-6 my-4">
+                                <a href="/data/edit/<%=Customer.id%>"
+                                    class="bg-black text-white px-2 py-1 rounded-lg">Edit</a>
+                                <form action="/data/delete/<%=Customer.id%>?_method=DELETE" class="inline-block"
+                                    method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" value="delete"
+                                        class="bg-black block text-white px-2 py-1 rounded-lg">delete</button>
+                                </form>
+                                <a href="/home/<%= Customer.id %>" class="bg-black text-white px-2 py-1 rounded-lg">View
+                                    Detail</a>
+                            </div>
+                        </div>
+                        <% }) %>
+                           
+                                <!-- res-booking.ejs -->
+
+<!-- Display customer data here -->
+
+<!-- Pagination -->
+<!-- Display the list of customers -->
+
+  
+<div class="pagination">
+    <% if (currentPage > 1) { %>
+      <a href="/res-booking?page=<%= currentPage - 1 %>" class="page-link">&laquo; Previous</a>
+    <% } %>
+  
+    <% for (let i = 1; i <= pages; i++) { %>
+      <% if (i === currentPage) { %>
+        <span class="page-link current"><%= i %></span>
+      <% } else { %>
+        <a href="/res-booking?page=<%= i %>" class="page-link"><%= i %></a>
+      <% } %>
+    <% } %>
+  
+    <% if (currentPage < pages) { %>
+      <a href="/res-booking?page=<%= currentPage + 1 %>" class="page-link">Next &raquo;</a>
+    <% } %>
+  </div>
+  
+  <% } else { %>
+    <p>No customers found</p>
+    <% } %>
+                       
+        </main>
+        <script>
+     
+
+        </script>
+
+        <%- include('./layouts/footer') %>

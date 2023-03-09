@@ -1,0 +1,115 @@
+<%-  include('./layouts/header') %>
+    <%-  include('./layouts/navbar') %>
+    <main class="tayy bg-center bg-cover bg-no-repeat">
+       
+       <form action="/data/edit/<%=data.id%>?_method=PUT" method="post" class="flex flex-col items-center bg-gradient-to-t from-black via-black  py-32">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="mb-8">
+            <h1 class="text-center text-3xl text-white font-bold underline">Edit Booking</h1>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:space-x-3 sm:flex-wrap justify-center">
+            <div>
+                <div class="m-1 text-lg text-white font-semibold text-semibold">Slip Number</div>
+                <input class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg bg-gray-400"  type="number" value="<%=data.slip%>" placeholder="" name="slip">
+            </div>
+          <div>
+            <div class="m-1 text-lg text-white font-semibold text-semibold">Customer Name</div>
+            <input class="my-4 border border-black  pr-14 py-3 pl-2 rounded-lg bg-gray-400" type="text" placeholder=" " value="<%=data.name%>" name="name" >
+          </div>
+          <div>
+            <div class="m-1 text-lg text-white font-semibold text-semibold">Phone Number</div>
+            <input class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg bg-gray-400"  value="<%=data.number%>" type="tel" placeholder=" " name="number">
+          </div>
+          <div>
+            <div class="m-1 text-lg text-white font-semibold text-semibold">Customer Address</div>
+            <input value="<%=data.address%>" class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg bg-gray-400" type="text" placeholder=" " name="address">
+          </div>
+        
+         <div>
+            <div class="m-1 text-lg text-white font-semibold text-semibold">Sitting Plan</div>
+            <input class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg bg-gray-400" value="<%=data.sitting%>" type="number" placeholder="" name="sitting">
+         </div>
+       
+    </div>
+    <div class="flex flex-col sm:flex-row sm:space-x-3 sm:flex-wrap justify-center"> 
+
+        <div>
+            <div class="m-1 text-lg text-white font-semibold text-semibold">Function Type</div>
+            <select name="fuction" class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg cursor-pointer  bg-gray-400">
+                <option selected value="<%=data.fuction%>" name="fuction" >Select here</option>
+                <option name="fuction" >Walima</option>
+                <option name="fuction" >Barat</option>
+                <option  name="fuction">Mendi</option>
+                <option name="fuction" >Other</option> 
+            </select>
+        </div>
+        
+        <div>
+            <div class="m-1 text-lg text-white font-semibold text-semibold">Area Type</div>
+            <select  name="area" class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg cursor-pointer  bg-gray-400">
+                <option selected value="<%=data.area%>" name="area">Select here</option>
+                <option name="area" >Basement</option>
+                <option name="area"  >Ground Floor</option>
+                <option name="area" >Roof Area</option>
+            </select>
+
+        </div>
+       <div>
+        <div class="m-1 text-lg text-white font-semibold text-semibold">Event Time</div>
+        <select name="t" class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg cursor-pointer bg-gray-400 ">
+            <option selected value="<%=data.t%>" name="t">Select here</option>
+            <option name="t" >Day</option>
+            <option  name="t">Night</option>
+        </select>
+
+       </div>
+        <div>
+            <div class="m-1 text-lg text-white font-semibold text-semibold">Total Rent</div>
+            <input class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg bg-gray-400" type="tel" id="value1" placeholder="" value="<%=data.t_rent%>" name="t_rent">
+        </div>
+        <div> 
+            <div class="m-1 text-lg text-white font-semibold text-semibold">Advance Rent</div>
+            <input class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg bg-gray-400" value="<%=data.a_rent%>"type="tel" placeholder="" id="value2" name="a_rent"></div>
+        
+       
+        
+    </div>
+    <div class="flex space-x-3">
+        <div>
+            <div class="m-1 text-lg text-white font-semibold text-semibold">Remaining Rent</div>
+            <input class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg bg-gray-400" type="tel" placeholder="" value="<%=data.r_rent%>" name="r_rent"  id="result">
+
+        </div>
+        <div>
+            <div class="m-1 text-lg text-white font-semibold text-semibold">Booking Date</div>
+            <input class="my-4 border border-black pr-14 py-3 pl-2 rounded-lg cursor-pointer bg-gray-400"   type="date" value="<%=data.date%>" name="date">
+ 
+        </div>
+        
+       
+    </div>
+    
+    <div class="flex space-x-4">
+        <input class="my-4 border border-gray-600 cursor-pointer bg-gradient-to-t from-black via-black to-violet-60 text-white  px-2 py-1 rounded-lg" type="submit" placeholder="Confirm Booking">
+        <a href="/home" class="my-4 border border-gray-600 cursor-pointer bg-gradient-to-t from-black via-black to-violet-60 text-white  px-2 py-1 rounded-lg" >REST</a>
+    </div>
+       
+
+       </form>
+
+    </main>
+    <script>
+        window.addEventListener("load", function() {
+      document.getElementById("value1").addEventListener("input", addValues);
+      document.getElementById("value2").addEventListener("input", addValues);
+    });
+    
+    function addValues() {
+      var value1 = document.getElementById("value1").value;
+      var value2 = document.getElementById("value2").value;
+      var result = parseInt(value1) - parseInt(value2);
+      document.getElementById("result").value = result;
+    }
+    
+    </script>
+  <%-  include('./layouts/footer') %>

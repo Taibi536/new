@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Marraige Hall</title>
+</head>
+<body class="tayy bg-no-repeat bg-center bg-cover" >
+    <main class="flex flex-col items-center h-screen  py-8  text-black bg-gradient-to-t from-black via-black ">
+        <a  href="/sign" class="mt-2 py-1 px-2 text-white rounded-md text-center ml-64 hover:underline underline-offset-4">SignUp</a>
+        <div class="left uppercase text-white underline font-bold sm:text-2xl">LogIn</div>
+        <h1 class="text-sm font-semibold text-gray-200">Login YourSelf First</h1>
+        <div >
+           
+            <form action="/" method="post" class="right flex flex-col mt-6 w-64">
+                <div class="m-1 text-lg text-gray-200 text-semibold">Username</div>
+                <input class="py-2 px-2 border bg-gray-600 border-black rounded-md" type="text" placeholder="" name="name">
+                <div class="m-1 text-lg text-gray-200 text-semibold">password</div>
+                <input class="py-2 px-2 border bg-gray-600 border-black rounded-md mt-2" type="password" placeholder="" name="password">
+                <input class="mt-2 py-2 bg-gradient-to-t from-stone-900 via-black text-white rounded-md text-center cursor-pointer " type="submit" value="log in">
+                
+                <h1 class="text-white text-1xl text-center  underline"> <%= massage %></h1>     
+            </form>
+        </div>
+    </main>
+</body>
+</html>

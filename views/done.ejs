@@ -1,0 +1,52 @@
+
+
+<%-  include('./layouts/header') %>
+
+<%-  include('./layouts/navbar') %>
+      
+<main class="tayy bg-center h-full bg-cover bg-no-repeat py-32 pb-96 text-white">
+    <div class="px-2">
+        <h1 class="font-bold underline text-center text-white text-3xl ">Done Bookings</h1>
+    </div>
+    <% data.forEach(Done => { %>
+        <div class="flex flex-col sm:flex-row items-center sm:justify-between sm:px-10 border border-gray-600  bg-gradient-to-t from-black via-black w-5/6 mx-32 rounded-3xl mt-4">
+            <div>
+                <ul class="flex  space-x-4 my-4 rounded-sm w-">
+                    <li class="">
+                        Name: <h1><%=Done.name %></h1>
+                    </li>
+                    <li class="">
+                        Slip ID:<h1> <%=Done.slip %></h1>
+                    </li>
+                    <li class="" id="">
+                        Date: <h1> 
+                        <% const date=new Date() %>
+                        <% const formattedDate = Done.date %>
+                        <h1><%= formattedDate %></h1>
+
+                 
+                 
+                     </h1>
+                  </li>
+                  
+            </ul>
+        </div>
+        <div class="space-x-6 my-4">
+            <a href="/data/editdone/<%=Done.id%>" class="bg-black text-white px-2 py-1 rounded-lg">Edit</a>
+          <form action="/done/delete/<%=Done.id%>?_method=DELETE" class="inline-block" method="post">
+                <input type="hidden" name="_method" value="DELETE" >
+                <button type="submit" value="delete" class="bg-black block text-white px-2 py-1 rounded-lg">delete</button>
+            </form>
+            <!-- <a href="/home/<%= Done.id %>" class="bg-black text-white px-2 py-1 rounded-lg">View Detail</a> -->
+        </div>
+    </div>
+<% }) %>
+
+    
+  <%=data%>
+    <h1>fhgf</h1>
+         
+</main>
+
+  
+        <%-  include('./layouts/footer') %>

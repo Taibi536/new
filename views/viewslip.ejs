@@ -1,0 +1,185 @@
+<%- include('./layouts/header') %>
+    <%- include('./layouts/navbar') %>
+
+        <main class="bg-[url('bck2.jpg')] bg-center bg-cover bg-no-repeat py-32">
+            <div class="bg-white text-black rounded-lg">
+                <div class="text-center ">
+                    <h1 class="font-bold text-3xl">Marriage hall</h1>
+                    <h2>Owner Contact</h2>
+                    <h3>address of marraige hall</h3>
+                </div>
+                <hr class="invert">
+                <ul class=" flex flex-col items-center text-sm sm:text-lg  ">
+                    <li class="my-4">Slip ID : <a href="">
+                            <%=data.slip%>
+                        </a></li>
+                    <li class="my-4">Customer Name: <a href="">
+                            <%=data.name%>
+                        </a></li>
+                    <li class="my-4"> Phone Number: <a href="">
+                            <%=data.number%>
+                        </a></li>
+                    <li class="my-4">Customer Address : <a href="">
+                            <%=data.address%>
+                        </a></li>
+                    <li class="my-4">Sitting Plan : <a href="">
+                            <%=data.sitting%>
+                        </a></li>
+                    <li class="my-4"> Function type: <a href="">
+                            <%=data.fuction%>
+                        </a></li>
+                    <li class="my-4"> Area type: <a href="">
+                            <%=data.area%>
+                        </a></li>
+                    <li class="my-4"> Event Time: <a href="">
+                            <%=data.t%>
+                        </a></li>
+                    <li class="my-4"> Total Rent: <a href="">
+                            <%=data.t_rent%>
+                        </a></li>
+
+                    <li class="my-4"> Advance Rent: <a href="">
+                            <%=data.a_rent%>
+                        </a></li>
+                    <% let date=new Date(data.date); %>
+                        <li class="my-4"> Date: <a href="">
+                                <%= date.getFullYear() %>-<%= (date.getMonth() + 1).toString().padStart(2, '0' ) %>-<%=
+                                            date.getDate().toString().padStart(2, '0' ) %>
+                            </a></li>
+                        <li class="my-4"> Remaining Rent: <a href="">
+                                <%=data.r_rent%>
+                            </a></li>
+                        <input value="print" type="submit" onclick="window.print()" class="bg-black text-white rounded-lg px-2 py-2 my-4 hover:bg-white
+                hover:text-black">
+                </ul>
+            </div>
+        </main>
+        <html>
+
+        <head>
+            <style>
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    border: 1px solid black;
+                }
+
+                table td {
+                    line-height: 25px;
+                    padding-left: 15px;
+                }
+
+                table th {
+                    background-color: #fbc403;
+                    color: #363636;
+                }
+            </style>
+
+        </head>
+
+        <body>
+            <table border="1">
+                <tr height="100px"
+                    style="background-color:#363636;color:#ffffff;text-align:center;font-size:24px; font-weight:600;">
+                    <td colspan='4'>Daliyaspirants.com Design Limited</td>
+                </tr>
+                <tr>
+                    <th>Personel NO:</th>
+                    <td>0123456</td>
+                    <th>Name</th>
+                    <td>Chandra</td>
+                </tr>
+                <!-----2 row--->
+                <tr>
+                    <th>Bank</th>
+                    <td>x0x0x0</td>
+                    <th>Bank A/c No.</th>
+                    <td>0x2x6x25x6</td>
+                </tr>
+                <!------3 row---->
+                <tr>
+                    <th>DOB</th>
+                    <td>23/02/xxxx</td>
+                    <th>Lop Days</th>
+                    <td>0</td>
+                </tr>
+                <!------4 row---->
+                <tr>
+                    <th>PF No.</th>
+                    <td>26123456</td>
+                    <th>STD days</th>
+                    <td>30</td>
+                </tr>
+                <!------5 row---->
+                <tr>
+                    <th>Location</th>
+                    <td>India</td>
+                    <th>Working Days</th>
+                    <td>30</td>
+                </tr>
+                <!------6 row---->
+                <tr>
+                    <th>Department</th>
+                    <td>IT</td>
+                    <th>Designation</th>
+                    <td>Designer</td>
+                </tr>
+            </table>
+            <tr></tr>
+            <br />
+            <table>
+                <tr>
+                    <td>Basic</td>
+                    <td><input type="text" placeholder="add Aou" name="" id="value1"></td>
+                    <td>provident fund</td>
+                    <td><input type="text" placeholder="add Aomun" name="" id="value2"></td>
+                </tr>
+                <tr>
+                    <td>House Rent Allowance</td>
+                    <td><input type="text" name="" placeholder="add A" id="value3"></td>
+                    <td>professional tax</td>
+                    <td><input type="text" name="" id="value4"></td>
+                </tr>
+                <tr>
+                    <td>special Allowance</td>
+                    <td><input type="text" name="" id="value5"></td>
+                    <td>Income tax</td>
+                    <td><input type="text" name="" id="value6"></td>
+                </tr>
+                <tr>
+                    <td>conveyance</td>
+                    <td><input type="text" name="" id="value7"></td>
+                </tr>
+                <tr>
+                    <td>ADD Special allowance</td>
+                    <td><input type="text" name="" id="value8"></td>
+                </tr>
+                <tr>
+                    <td>shift Allowance</td>
+                    <td><input type="text" name="" id="value9"></td>
+                </tr>
+                <tr>
+                    <td>bonus</td>
+                    <td><input type="text" name="" id="value10"></td>
+                </tr>
+                <tr>
+                    <td>medical Allowance</td>
+                    <td><input type="text" name="" id="value11"></td>
+                </tr>
+                <tr>
+                    <th>Gross Earnings</th>
+                    <td><input type="text" id="grossEarnings"></td>
+                    <th>Gross Deductions</th>
+                    <td><input type="text" name="" id="value12"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><strong>NET PAY</strong></td>
+                    <td><input type="text" name="" id="netPay"></td>
+                    <td></td>
+                </tr>
+            </table>
+        
+            
+            
+        <%- include('./layouts/footer') %>

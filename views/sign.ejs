@@ -1,0 +1,31 @@
+<%-  include('./layouts/header') %>
+
+<body class=" tayy bg-no-repeat bg-center bg-cover">
+    <main class="flex flex-col items-center py-8 text-black h-screen bg-gradient-to-t from-black via-black">
+        <div class="left font-bold sm:text-2xl uppercase underline text-white">Sign Up</div>
+        <h1 class="text-sm font-semibold text-gray-200">SignUp Yourself If You are new</h1>
+        <div >
+            <form action="/add" method="post" class="right flex flex-col mt-6 w-64" onsubmit="return validiton()">
+                <div class="m-1 text-lg text-gray-200 text-semibold">Username</div>
+                <input class="py-2 px-2  bg-gray-600 border border-black rounded-md" type="text" placeholder="" name="name">
+                <div class="m-1 text-lg text-gray-200 text-semibold">password</div>
+                <input  id="dm" class="py-2 px-2 border bg-gray-600 border-black rounded-md mt-2" type="password" name="password" placeholder="">
+               <b><p id="incorrect" class="text-red-700"></p></b> 
+                <input type="submit"
+                class="mt-2 py-2 bg-gradient-to-t from-black via-black text-white border border-gray-600 rounded-md text-center cursor-pointer ">
+                
+            </form>
+        </div>
+    </main>
+    <script>
+let validiton=()=>{
+let pas=document.getElementById('dm').value;
+console.log(pas);
+if (pas.length<8) {
+    let d=document.getElementById('incorrect').innerHTML="**enter password greater  then 8 number"
+    return false;
+}
+
+}
+    </script>
+<%-  include('./layouts/footer') %>
